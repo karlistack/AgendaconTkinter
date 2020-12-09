@@ -4,7 +4,7 @@ import app
 def main():
     root = Tk()
     root.title('Agenda de contacto por maria dolores')
-    root.configure(bg = "green")
+    root.configure(bg = "stateblue")
     root.geometry("+350+80")
     root.resizable(0,0)
     app.App(root) 

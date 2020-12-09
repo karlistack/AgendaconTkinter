@@ -5,9 +5,7 @@ from tkinter import messagebox as CajadeMensajes
 import ordenadalo
 import csv
 
-# -------------------------- GLOBAL FUNCTIONS ------------------------------------------
 
-# ----------- MESAGE BOX ---------------------------------------
 def nohay(var):
     var_s = str(var)
     CajadeMensajes.showinfo("no se encontro", var_s + ' ' + "no hay")
@@ -46,66 +44,66 @@ class App():
         menubar = Menu(self.window)
         self.window.config(menu = menubar)
 
-        filemenu = Menu(menubar, tearoff = 0, bg = "#FFBB20")
-        filemenu.add_command(label = "Show all contactos", command = lambda: muestra_los_contactos(), font = ("Helveltica", "9", "normal"))
-        filemenu.add_command(label = "User manual", font = ("Helveltica", "9", "normal"))
+        filemenu = Menu(menubar, tearoff = 0, bg = "#StateBlue2")
+        filemenu.add_command(label = "Show all contactos", command = lambda: muestra_los_contactos(), font = ("Roboto Mono", "9", "normal"))
+        filemenu.add_command(label = "User manual", font = ("Roboto Mono", "9", "normal"))
         filemenu.add_separator()
-        filemenu.add_command(label = "Close", command = self.window.quit, font = ("Helveltica", "9", "normal"))
+        filemenu.add_command(label = "Close", command = self.window.quit, font = ("Roboto Mono", "9", "normal"))
 
         menubar.add_cascade(label = "Menu", menu = filemenu)
 
-        inbox_frame = LabelFrame(self.window, bg = "#53CDB8")
+        inbox_frame = LabelFrame(self.window, bg = "StateBlue")
         inbox_frame.grid(row = 0, column = 0)
         
-        button_frame = LabelFrame(self.window, bg = "#53CDB8")
+        button_frame = LabelFrame(self.window, bg = "StateBlue")
         button_frame.grid(row = 2, column = 0)
 
-        three_frame = LabelFrame(self.window, bg = "#53CDB8")
+        three_frame = LabelFrame(self.window, bg = "StateBlue")
         three_frame.grid(row = 4, column = 0)
         
-        three_button_frame = LabelFrame(self.window, bg = "#53CDB8")
+        three_button_frame = LabelFrame(self.window, bg = "StateBlue")
         three_button_frame.grid(row = 5, column = 0)
 
-        Label(inbox_frame, text = 'nombre', bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 0, column = 0)
-        inbox_nombre = Entry(inbox_frame, font = ("Comic Sans MS", "11", "normal"), width = 28)
+        Label(inbox_frame, text = 'nombre', bg = "StateBlue", font = ("MonoLisa", "11", "normal")).grid(row = 0, column = 0)
+        inbox_nombre = Entry(inbox_frame, font = ("MonoLisa", "11", "normal"), width = 28)
         inbox_nombre.grid(row = 1, column = 0)
         inbox_nombre.focus()
 
-        Label(inbox_frame, text = 'telefono', bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 0, column = 1)
-        inbox_telefono = Entry(inbox_frame, font = ("Comic Sans MS", "11", "normal"), width = 20)
+        Label(inbox_frame, text = 'telefono', bg = "StateBlue", font = ("MonoLisa", "11", "normal")).grid(row = 0, column = 1)
+        inbox_telefono = Entry(inbox_frame, font = ("MonoLisa", "11", "normal"), width = 20)
         inbox_telefono.grid(row = 1, column = 1)
 
-        Label(inbox_frame, text = 'Email', bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 0, column = 2)
-        inbox_Email = Entry(inbox_frame, font = ("Comic Sans MS", "11", "normal"), width = 30)
+        Label(inbox_frame, text = 'Email', bg = "StateBlue", font = ("MonoLisa", "11", "normal")).grid(row = 0, column = 2)
+        inbox_Email = Entry(inbox_frame, font = ("MonoLisa", "11", "normal"), width = 30)
         inbox_Email.grid(row = 1, column = 2)
 
         Add_contact_button = Button(button_frame, command = lambda: añadir(), text = 'Añadir Contacto', width = 20)
-        Add_contact_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        Add_contact_button.configure(bg = "LightCyan2", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         Add_contact_button.grid(row = 0, column = 0, padx = 2, pady = 3, sticky = W + E)
 
         buscando_button = Button(button_frame, command = lambda: buscando(), text = 'buscar contacto', width = 20)
-        buscando_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        buscando_button.configure(bg = "LightCyan2", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         buscando_button.grid(row = 0, column = 1, padx = 2, pady = 3, sticky = W + E)
 
         delete_button = Button(button_frame, command = lambda: borra(), text = 'Borrar contact0', width = 20)
-        delete_button.configure(bg = "#F26262", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        delete_button.configure(bg = "red", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         delete_button.grid(row = 1, column = 0, padx = 2, pady = 3, sticky = W + E)
 
         modify_button = Button(button_frame, command = lambda: modfica(), text = 'modificar contacto')
-        modify_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        modify_button.configure(bg = "LightCyan2", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         modify_button.grid(row = 1, column = 1, padx = 2, pady = 3, sticky = W + E)
 
         show_contacts_button = Button(button_frame, command = lambda: muestra_los_contactos(), text = 'Mostrar todos los Contactos', width = 20)
-        show_contacts_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        show_contacts_button.configure(bg = "LightCyan2", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         show_contacts_button.grid(row = 0, column = 2, padx = 2, pady = 3, sticky = W + E)
         
         save_changes_button = Button(button_frame, command = lambda: limpialotood(), text = 'limpia la pantalla', width = 20)
-        save_changes_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        save_changes_button.configure(bg = "LightCyan2", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         save_changes_button.grid(row = 1, column = 2, padx = 2, pady = 3, sticky = W + E)
 
-        Label(button_frame, text = 'buscando/Modifica', bg = "#53CDB8", font = ("Comic Sans MS", "10", "normal")).grid(row = 0, column = 3, columnspan = 3)
+        Label(button_frame, text = 'buscando/Modifica', bg = "StateBlue", font = ("MonoLisa", "10", "normal")).grid(row = 0, column = 3, columnspan = 3)
         
-        combo = ttk.Combobox(button_frame, state = 'readonly', width = 17, justify = 'center', font = ("Comic Sans MS", "10", "normal"))
+        combo = ttk.Combobox(button_frame, state = 'readonly', width = 17, justify = 'center', font = ("MonoLisa", "10", "normal"))
         combo["values"] = ['nombre', 'telefono', 'Email']
         combo.grid(row = 1, column = 3, padx = 15)
         combo.current(0)
@@ -283,44 +281,44 @@ class elpantallon():
 
         haceventanas = Toplevel(self.root_window)
         haceventanas.title("modifica el contacto")
-        haceventanas.configure(bg = "#53CDB8")
+        haceventanas.configure(bg = "StateBlue")
         haceventanas.geometry("+400+100")
         haceventanas.resizable(0,0)
 
-        texto = LabelFrame(haceventanas, bg = "#53CDB8")
+        texto = LabelFrame(haceventanas, bg = "StateBlue")
         texto.grid(row = 0, column = 0)
 
-        botonc = LabelFrame(haceventanas, bg = "#53CDB8")
+        botonc = LabelFrame(haceventanas, bg = "StateBlue")
         botonc.grid(row = 2, column = 0)
 
-        Label(texto, text = "¿Quires modificar este contacto?", bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 0, column = 0, columnspan = 3)
-        Label(texto, text = self.nombre, bg = "#53CDB8", font = ("Comic Sans MS", "11", "bold")).grid(row = 1, column = 0)
-        Label(texto, text = self.telefono, bg = "#53CDB8", font = ("Comic Sans MS", "11", "bold")).grid(row = 1, column = 1)
-        Label(texto, text = self.email, bg = "#53CDB8", font = ("Comic Sans MS", "11", "bold")).grid(row = 1, column = 2)
+        Label(texto, text = "¿Quires modificar este contacto?", bg = "StateBlue", font = ("MonoLisa", "11", "normal")).grid(row = 0, column = 0, columnspan = 3)
+        Label(texto, text = self.nombre, bg = "StateBlue", font = ("MonoLisa", "11", "bold")).grid(row = 1, column = 0)
+        Label(texto, text = self.telefono, bg = "StateBlue", font = ("MonoLisa", "11", "bold")).grid(row = 1, column = 1)
+        Label(texto, text = self.email, bg = "StateBlue", font = ("MonoLisa", "11", "bold")).grid(row = 1, column = 2)
         
-        Label(texto, text = 'Escribe un nuevo nombre', bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 2, column = 0)
-        n_inbox_nombre = Entry(texto, font = ("Comic Sans MS", "11", "normal"), width = 28)
+        Label(texto, text = 'Escribe un nuevo nombre', bg = "StateBlue", font = ("MonoLisa", "11", "normal")).grid(row = 2, column = 0)
+        n_inbox_nombre = Entry(texto, font = ("MonoLisa", "11", "normal"), width = 28)
         n_inbox_nombre.grid(row = 3, column = 0)
         n_inbox_nombre.focus()
 
-        Label(texto, text = 'Escribe un nuevo telefono', bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 2, column = 1)
-        n_inbox_telefono = Entry(texto, font = ("Comic Sans MS", "11", "normal"), width = 20)
+        Label(texto, text = 'Escribe un nuevo telefono', bg = "StateBlue", font = ("MonoLisa", "11", "normal")).grid(row = 2, column = 1)
+        n_inbox_telefono = Entry(texto, font = ("MonoLisa", "11", "normal"), width = 20)
         n_inbox_telefono.grid(row = 3, column = 1)
 
-        Label(texto, text = 'Escribe un nuevo Email', bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 2, column = 2)
-        n_inbox_Email = Entry(texto, font = ("Comic Sans MS", "11", "normal"), width = 30)
+        Label(texto, text = 'Escribe un nuevo Email', bg = "StateBlue", font = ("MonoLisa", "11", "normal")).grid(row = 2, column = 2)
+        n_inbox_Email = Entry(texto, font = ("MonoLisa", "11", "normal"), width = 30)
         n_inbox_Email.grid(row = 3, column = 2)
 
         Si_button = Button(botonc, command = lambda: Si(), text = 'Si', width = 20)
-        Si_button.configure(bg = "#F26262", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        Si_button.configure(bg = "#F26262", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         Si_button.grid(row = 1, column = 0, padx = 2, pady = 3, sticky = W + E)
 
         no_button = Button(botonc, command = haceventanas.destroy, text = 'No', width = 20, bg = "yellow", cursor = 'hand2')
-        no_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        no_button.configure(bg = "LightCyan2", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         no_button.grid(row = 1, column = 1, padx = 2, pady = 3, sticky = W + E)
 
         cancelamos_button = Button(botonc, command = haceventanas.destroy, text = 'Cancela', width = 20, bg = "green", cursor = 'hand2')
-        cancelamos_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
+        cancelamos_button.configure(bg = "LightCyan2", cursor = 'hand2', font = ("MonoLisa", "10", "normal"))
         cancelamos_button.grid(row = 1, column = 2, padx = 2, pady = 3, sticky = W + E)
 
         # ----------------- BUTTON FUNCTIONS ------------------
