@@ -54,7 +54,6 @@ class App():
 
         menubar.add_cascade(label = "Menu", menu = filemenu)
 
-        # ---------------- FRAMES DECLARATION -----------------
         inbox_frame = LabelFrame(self.window, bg = "#53CDB8")
         inbox_frame.grid(row = 0, column = 0)
         
@@ -67,7 +66,6 @@ class App():
         three_button_frame = LabelFrame(self.window, bg = "#53CDB8")
         three_button_frame.grid(row = 5, column = 0)
 
-        # --------------- INBOX WIDGETS ZONE ------------------
         Label(inbox_frame, text = 'nombre', bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 0, column = 0)
         inbox_nombre = Entry(inbox_frame, font = ("Comic Sans MS", "11", "normal"), width = 28)
         inbox_nombre.grid(row = 1, column = 0)
@@ -81,48 +79,43 @@ class App():
         inbox_Email = Entry(inbox_frame, font = ("Comic Sans MS", "11", "normal"), width = 30)
         inbox_Email.grid(row = 1, column = 2)
 
-        # --------------- BUTTON WIDGETS ZONE -----------------
-        Add_contact_button = Button(button_frame, command = lambda: añadir(), text = 'Add Contact', width = 20)
+        Add_contact_button = Button(button_frame, command = lambda: añadir(), text = 'Añadir Contacto', width = 20)
         Add_contact_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         Add_contact_button.grid(row = 0, column = 0, padx = 2, pady = 3, sticky = W + E)
 
-        buscando_button = Button(button_frame, command = lambda: buscando(), text = 'buscando contact', width = 20)
+        buscando_button = Button(button_frame, command = lambda: buscando(), text = 'buscar contacto', width = 20)
         buscando_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         buscando_button.grid(row = 0, column = 1, padx = 2, pady = 3, sticky = W + E)
 
-        delete_button = Button(button_frame, command = lambda: borra(), text = 'Delete contact', width = 20)
+        delete_button = Button(button_frame, command = lambda: borra(), text = 'Borrar contact0', width = 20)
         delete_button.configure(bg = "#F26262", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         delete_button.grid(row = 1, column = 0, padx = 2, pady = 3, sticky = W + E)
 
-        modify_button = Button(button_frame, command = lambda: modfica(), text = 'Modify contact')
+        modify_button = Button(button_frame, command = lambda: modfica(), text = 'modificar contacto')
         modify_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         modify_button.grid(row = 1, column = 1, padx = 2, pady = 3, sticky = W + E)
 
-        show_contacts_button = Button(button_frame, command = lambda: muestra_los_contactos(), text = 'Show all Contacts', width = 20)
+        show_contacts_button = Button(button_frame, command = lambda: muestra_los_contactos(), text = 'Mostrar todos los Contactos', width = 20)
         show_contacts_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         show_contacts_button.grid(row = 0, column = 2, padx = 2, pady = 3, sticky = W + E)
         
-        save_changes_button = Button(button_frame, command = lambda: limpialotood(), text = 'Clean window', width = 20)
+        save_changes_button = Button(button_frame, command = lambda: limpialotood(), text = 'limpia la pantalla', width = 20)
         save_changes_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         save_changes_button.grid(row = 1, column = 2, padx = 2, pady = 3, sticky = W + E)
 
-        # -------------- COMBOBOX WIDGETS ZONE ----------------
-        Label(button_frame, text = 'buscando/Modify Selection', bg = "#53CDB8", font = ("Comic Sans MS", "10", "normal")).grid(row = 0, column = 3, columnspan = 3)
+        Label(button_frame, text = 'buscando/Modifica', bg = "#53CDB8", font = ("Comic Sans MS", "10", "normal")).grid(row = 0, column = 3, columnspan = 3)
         
         combo = ttk.Combobox(button_frame, state = 'readonly', width = 17, justify = 'center', font = ("Comic Sans MS", "10", "normal"))
         combo["values"] = ['nombre', 'telefono', 'Email']
         combo.grid(row = 1, column = 3, padx = 15)
         combo.current(0)
 
-        # --------------- TREE DIRECTORY ZONE -----------------
-        # Table for database
         self.tree = ttk.Treeview(three_frame, height = 20, columns = ("one", "two"))
         self.tree.grid(padx = 5, pady = 5, row = 0, column = 0, columnspan = 1)
         self.tree.heading("#0", text = 'nombre', anchor = CENTER)
         self.tree.heading("one", text = 'telefono', anchor = CENTER)
         self.tree.heading("two", text = 'Email', anchor = CENTER)
 
-        #Scroll
         scrollVert = Scrollbar(three_frame, command = self.tree.yview)
         self.tree.configure(yscrollcommand = scrollVert.set)
         scrollVert.grid(row = 0, column = 1, sticky = "nsew")
@@ -131,9 +124,7 @@ class App():
         self.tree.configure(xscrollcommand = scroll_x.set)
         scroll_x.grid(row = 2, column = 0, columnspan = 1, sticky = "nsew")
 
-# -------------------------- COMMAND FUNCTIONS DECLARATION -----------------------------
 
-        # --------------- AUXILIAR FUNCTIONS ------------------
         def limpia_lainbox():
             inbox_nombre.delete(0, 'end')
             inbox_telefono.delete(0, 'end')
@@ -185,7 +176,7 @@ class App():
                 email = str(list_answer[2])
                 self.tree.insert("", 0, text = "------------------------------", values = ("------------------------------", "------------------------------"))
                 self.tree.insert("", 0, text = nombre, values = (telefono, email))
-                self.tree.insert("", 0, text = "buscando result of nombre", values = ("buscando result of telefono", "buscando result of email"))
+                self.tree.insert("", 0, text = "buscando resultado del nombre", values = ("buscando resultados de telefono", "buscando resultados de email"))
                 self.tree.insert("", 0, text = "------------------------------", values = ("------------------------------", "------------------------------"))
 
         def _check_1(answer,var_buscando):
@@ -196,7 +187,6 @@ class App():
             else:
                 elpantallon(self.window, val_modify)
 
-        # ----------------- BUTTON FUNCTIONS ------------------
         def añadir():
             nombre = inbox_nombre.get()
             telefono = inbox_telefono.get()
@@ -214,7 +204,7 @@ class App():
                 guarda(nombre, telefono, email)
                 self.tree.insert("", 0, text = "------------------------------", values = ("------------------------------", "------------------------------"))
                 self.tree.insert("", 0, text = str(nombre), values = (str(telefono), str(email)))
-                self.tree.insert("", 0, text = "New nombre added", values = ("New telefono added", "New email added"))
+                self.tree.insert("", 0, text = "NUevo nombre añadido", values = ("nuevo telefono añadido", "Nuevo email añadido"))
                 self.tree.insert("", 0, text = "------------------------------", values = ("------------------------------", "------------------------------"))
             validador = []
             limpia_lainbox()
@@ -282,7 +272,6 @@ class App():
             limpia_lainbox()
             _clean_treeview()
 
-# ------------------------- TOP LEVE WINDOW ----------------------------------------------
 
 class elpantallon():
     def __init__(self, root, val_modify):
@@ -298,20 +287,17 @@ class elpantallon():
         haceventanas.geometry("+400+100")
         haceventanas.resizable(0,0)
 
-        # ---------------- FRAMES DECLARATION -----------------
         texto = LabelFrame(haceventanas, bg = "#53CDB8")
         texto.grid(row = 0, column = 0)
 
         botonc = LabelFrame(haceventanas, bg = "#53CDB8")
         botonc.grid(row = 2, column = 0)
 
-        # --------------- LABELS WIDGETS ZONE -----------------
-        Label(texto, text = "Do you want to modify this contact?", bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 0, column = 0, columnspan = 3)
+        Label(texto, text = "¿Quires modificar este contacto?", bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 0, column = 0, columnspan = 3)
         Label(texto, text = self.nombre, bg = "#53CDB8", font = ("Comic Sans MS", "11", "bold")).grid(row = 1, column = 0)
         Label(texto, text = self.telefono, bg = "#53CDB8", font = ("Comic Sans MS", "11", "bold")).grid(row = 1, column = 1)
         Label(texto, text = self.email, bg = "#53CDB8", font = ("Comic Sans MS", "11", "bold")).grid(row = 1, column = 2)
         
-        # --------------- INBOX WIDGETS ZONE ------------------
         Label(texto, text = 'Escribe un nuevo nombre', bg = "#53CDB8", font = ("Comic Sans MS", "11", "normal")).grid(row = 2, column = 0)
         n_inbox_nombre = Entry(texto, font = ("Comic Sans MS", "11", "normal"), width = 28)
         n_inbox_nombre.grid(row = 3, column = 0)
@@ -325,7 +311,6 @@ class elpantallon():
         n_inbox_Email = Entry(texto, font = ("Comic Sans MS", "11", "normal"), width = 30)
         n_inbox_Email.grid(row = 3, column = 2)
 
-        # --------------- BUTTON WIDGETS ZONE -----------------
         Si_button = Button(botonc, command = lambda: Si(), text = 'Si', width = 20)
         Si_button.configure(bg = "#F26262", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         Si_button.grid(row = 1, column = 0, padx = 2, pady = 3, sticky = W + E)
@@ -334,7 +319,7 @@ class elpantallon():
         no_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         no_button.grid(row = 1, column = 1, padx = 2, pady = 3, sticky = W + E)
 
-        cancelamos_button = Button(botonc, command = haceventanas.destroy, text = 'Cancel', width = 20, bg = "green", cursor = 'hand2')
+        cancelamos_button = Button(botonc, command = haceventanas.destroy, text = 'Cancela', width = 20, bg = "green", cursor = 'hand2')
         cancelamos_button.configure(bg = "#FFBB20", cursor = 'hand2', font = ("Comic Sans MS", "10", "normal"))
         cancelamos_button.grid(row = 1, column = 2, padx = 2, pady = 3, sticky = W + E)
 
